@@ -1,0 +1,58 @@
+<mvc:View
+	controllerName="zjblessons.Market.controller.Object"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:titleHeading>
+			<VBox>
+				<Title text="{json>/MaterialText}" visible="{= !${objectView>/editMode}}"/>
+				<Input value="{json>/MaterialText}" visible="{objectView>/editMode}"/>
+			</VBox>
+		</semantic:titleHeading>
+		
+		<semantic:content>
+			<VBox visible="true">
+				<Title text="{= ${json>/MaterialDescription} === null ? 'No Description text' : ${json>/MaterialDescription}}" visible="{= !${objectView>/editMode}}"/>
+				<Input value="{json>/MaterialDescription}" visible="{objectView>/editMode}"/>
+				<Title text="{= ${json>/GroupID} === null ? 'No Group ID' : ${json>/GroupID}}" visible="{= !${objectView>/editMode}}"/>
+				<Input value="{json>/GroupID}" visible="{objectView>/editMode}"/>
+				<Title text="{= ${json>/SubGroupID} === null ? 'No Sub Group ID' : ${json>/SubGroupID}}" visible="{= !${objectView>/editMode}}"/>
+				<Input value="{json>/SubGroupID}" visible="{objectView>/editMode}"/>
+			</VBox>
+		</semantic:content>
+		
+		<semantic:titleCustomTextActions>
+			<Button text="{i18n>worklistEdit}" visible="{= !${objectView>/editMode}}" press="onPressEdit"/>
+			<Button text="{i18n>worklistSave}" visible="{objectView>/editMode}" press="onPressSave"/>
+			<Button text="{i18n>worklistReset}" visible="{objectView>/editMode}" press="onPressReset"/>
+		</semantic:titleCustomTextActions>
+
+		<!--<semantic:headerContent>-->
+		<!--	<ObjectNumber-->
+		<!--	/>-->
+		<!--</semantic:headerContent>-->
+
+		<!--<semantic:sendEmailAction>-->
+		<!--	<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>-->
+		<!--</semantic:sendEmailAction>-->
+
+		<!--<semantic:shareInJamAction>-->
+		<!--	<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>-->
+		<!--</semantic:shareInJamAction>-->
+
+		<!--<semantic:saveAsTileAction>-->
+		<!--	<footerbar:AddBookmarkButton id ="shareTile" title="{objectView>/saveAsTileTitle}" />-->
+		<!--</semantic:saveAsTileAction>-->
+
+	</semantic:SemanticPage>
+
+</mvc:View>
